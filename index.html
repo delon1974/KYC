@@ -6,11 +6,11 @@
     <title>曼尼森林 - 私人财富守护神测评</title>
     <style>
         :root {
-            --primary-color: #2F4F4F; /* 私行质感：深林绿 */
+            --primary-color: #2F4F4F; 
             --bg-color: #F8F9FA; 
             --card-bg: #FFFFFF;
             --text-color: #333333;
-            --accent-color: #B8860B; /* 强调色：暗金 */
+            --accent-color: #B8860B; 
         }
         body {
             font-family: 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -98,37 +98,7 @@
             display: none; 
         }
         .res-header {
-            margin-bottom: 30px;
-        }
-        .guardian-name {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--primary-color);
-            margin: 15px 0;
-        }
-        .tags {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-        }
-        .desc-box {
-            font-size: 15px;
-            line-height: 1.8;
-            text-align: left;
-            background: #F8F9FA;
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent-color);
-            margin-bottom: 30px;
-        }
-        .desc-box strong {
-            color: var(--primary-color);
+            margin-bottom: 20px;
         }
         .action-btn {
             background-color: var(--primary-color);
@@ -137,6 +107,7 @@
             text-align: center;
             font-weight: bold;
             letter-spacing: 1px;
+            margin-top: 15px;
         }
         .action-btn:hover {
             background-color: #1a3333;
@@ -148,7 +119,7 @@
 
 <div class="container" id="quiz-container">
     <h1>曼尼森林初级试炼</h1>
-    <p class="subtitle">私人银行级 KYC 财务风险偏好测定</p>
+    <p class="subtitle">私人银行级 KYC 财务风险偏好测定</p >
     
     <div class="progress-bar">
         <div class="progress" id="progress"></div>
@@ -164,27 +135,24 @@
 
 <div class="container result-box" id="result-container">
     <div class="res-header">
-        <p class="subtitle" style="margin-bottom: 10px;">经底层算法判定，您的专属财务守护神为：</p>
-        <div class="guardian-name" id="res-guardian">加载中...</div>
-        <div class="tags" id="res-tags">加载中...</div>
+        <h1 style="margin-bottom: 10px;">试炼完成</h1>
+        <p class="subtitle" style="margin-bottom: 25px;">为您揭晓专属财富守护神</p >
     </div>
     
-    <div class="desc-box" id="res-desc">
-        <p style="margin-top:0;"><strong>【银行风险属性】</strong> <br><span id="res-risk" style="color:#B8860B; font-weight:bold; font-size:18px;">加载中...</span></p>
-        <p><strong>【核心财务画像】</strong> <br><span id="res-text">加载中...</span></p>
+    <div style="text-align: center; margin-bottom: 20px;">
+        < img id="res-image" src="" alt="财富守护神卡牌" style="max-width: 100%; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); display: none;">
     </div>
+    
+    <p style="color: #888; font-size: 13px; margin-bottom: 25px;">💡 提示：可长按或右键保存您的专属卡牌</p >
     
     <button class="option-btn action-btn" onclick="location.reload()">重新进行测试</button>
 </div>
 
 <script>
-    // 维度积分器
     let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
     let currentQuestion = 0;
 
-    // 完整 28 道精编题库
     const questions = [
-        // --- E vs I (信息获取) ---
         { text: "当你需要了解一个全新的投资领域时，你更倾向于：", options: [{ text: "参加相关的线下沙龙、找圈内朋友交流或在社群里提问", val: "E" }, { text: "自己默默搜索深度研报、阅读专业文章和底层数据", val: "I" }] },
         { text: "面对市场上突然爆火、大家都在讨论的“造富神话”，你的第一反应是：", options: [{ text: "感到兴奋，想赶紧找人打听怎么参与，怕错过机会", val: "E" }, { text: "保持警惕，觉得人多的地方危险，先自己冷眼旁观", val: "I" }] },
         { text: "在做出一个重大财务决策（如大额加仓或重资产配置）前，你通常会：", options: [{ text: "广泛征求身边专业人士或朋友的意见，讨论能理清思路", val: "E" }, { text: "基本上在自己脑海里已经推演完毕，极少需要与他人讨论", val: "I" }] },
@@ -192,8 +160,6 @@
         { text: "周末复盘本周的投资盈亏时，你觉得哪种方式更让你觉得有收获？", options: [{ text: "约几个懂行的朋友，一边喝着精品手冲一边探讨市场", val: "E" }, { text: "自己一个人安静地坐在书桌前，独自看盘、整理数据", val: "I" }] },
         { text: "在高端投资交流群或校友群里，你的常态是：", options: [{ text: "经常发言，分享自己的看法，喜欢思想碰撞带来的灵感", val: "E" }, { text: "万年潜水党，只看别人的逻辑，极少发表自己的观点", val: "I" }] },
         { text: "如果你在某项高风险投资上赚了一大笔钱，你会：", options: [{ text: "忍不住和亲近的人分享这份喜悦和成功的操盘经验", val: "E" }, { text: "觉得没必要声张，默默把利润转入下一个资产包", val: "I" }] },
-
-        // --- S vs N (资产周期) ---
         { text: "如果要在你的投资组合中加入一家新公司，你最看重它的哪一点？", options: [{ text: "过去五年扎实的财务报表、充沛的现金流和持续的分红", val: "S" }, { text: "它的CEO描绘的十年后改变行业的宏大愿景和颠覆性技术", val: "N" }] },
         { text: "阅读一份上市公司的年度报告，你通常最先看哪里？", options: [{ text: "具体的利润表、资产负债表和核心运营数据", val: "S" }, { text: "董事长致辞、未来的战略规划和新业务布局", val: "N" }] },
         { text: "对于某些处于萌芽期的前沿创新概念资产，你的态度是：", options: [{ text: "觉得太虚无缥缈，等它们真正普及并产生正向盈利再说", val: "S" }, { text: "非常感兴趣，认为这就是未来的趋势，愿意用小资金押注", val: "N" }] },
@@ -201,8 +167,6 @@
         { text: "面对一份极其详尽但略显枯燥的50页尽调报告，你会：", options: [{ text: "耐心逐页阅读，尤其是其中的数据图表和附录细节", val: "S" }, { text: "直接跳到结论和摘要，抓取核心逻辑，细节不太在意", val: "N" }] },
         { text: "你更喜欢哪种类型的理财进阶课程？", options: [{ text: "讲授具体的实操技巧、财务指标分析和落地案例复盘", val: "S" }, { text: "探讨全球宏观经济周期、地缘政经格局演变和产业大趋势", val: "N" }] },
         { text: "你认为成功的理财更依赖于：", options: [{ text: "丰富的历史经验和对商业常识的坚守", val: "S" }, { text: "超前的洞察力和不断颠覆自我认知的魄力", val: "N" }] },
-
-        // --- T vs F (风险底色) ---
         { text: "你重仓的一只基金突然无预警下跌了15%，你当晚的状态是：", options: [{ text: "迅速查阅资讯和宏观数据，冷酷计算是否需要止损或加仓", val: "T" }, { text: "感到焦虑或沮丧，在心里默默祈祷它涨回来或寻找安慰", val: "F" }] },
         { text: "某理财产品收益极高，但底层资产涉及严重污染环境的企业。你会：", options: [{ text: "只要产品合法合规且收益可观，道德问题不影响财务决策", val: "T" }, { text: "心里非常抗拒，宁愿少赚一点，也不把钱投给价值观不合的地方", val: "F" }] },
         { text: "你在朋友初创公司投资的钱快打水漂了，朋友又来借钱周转，你会：", options: [{ text: "严格评估救活的概率(ROI)，如果没戏果断拒绝及时止损", val: "T" }, { text: "考虑到多年交情和对方处境，即使知道打水漂也会借钱", val: "F" }] },
@@ -210,8 +174,6 @@
         { text: "在选择理财合伙人或高管团队时，你更看重他：", options: [{ text: "专业能力极强，历史业绩优秀，哪怕性格有些冷漠高傲", val: "T" }, { text: "沟通让人如沐春风，非常理解我的诉求，让我有强烈安全感", val: "F" }] },
         { text: "面对市场暴跌，你听到别人“血本无归”的惨状时，你的内心戏是：", options: [{ text: "分析他们做错了哪一步，提醒自己不要犯同样的逻辑错误", val: "T" }, { text: "深深共情他们的痛苦，甚至因此对资本市场产生一丝恐惧", val: "F" }] },
         { text: "你认为卓越的财富管理规划应该是：", options: [{ text: "像机器一样冷酷、客观，完全用数据、对冲和纪律说话", val: "T" }, { text: "充满人性关怀，能兼顾家人的幸福感、健康保障和生活品质", val: "F" }] },
-
-        // --- J vs P (资产配置纪律) ---
         { text: "面对一笔刚到账的丰厚分红或年终奖，你的第一反应是：", options: [{ text: "按年初做好的表格，有条不紊地将资金划入固收和权益账户", val: "J" }, { text: "先放在活期里，边走边看，最近如果有大跌好机会就一把投入", val: "P" }] },
         { text: "对于“严格纪律定投”这种策略，你的真实感受是：", options: [{ text: "非常认同且能严格执行，喜欢这种纪律带来的确定性和掌控感", val: "J" }, { text: "觉得有点死板，我更喜欢自己择时，逢低多买点，逢高少买点", val: "P" }] },
         { text: "在安排一趟高强度的旅行（如大雪山徒步）时，你会：", options: [{ text: "出发前就把路线图、装备清单、行程和预算规划得明明白白", val: "J" }, { text: "确定个大方向和充足的备用金就出发，到了当地随性调整", val: "P" }] },
@@ -221,27 +183,25 @@
         { text: "你更希望别人评价你的理财风格是：", options: [{ text: "稳扎稳打，极具条理性和纪律性，步步为营", val: "J" }, { text: "嗅觉灵敏，极具弹性和爆发力，总能敏锐捕捉战机", val: "P" }] }
     ];
 
-    // 16型人格字典与私行风险映射 (完全版)
     const dictionary = {
-        "ENTP": { name: "游隼 (Peregrine Falcon)", tags: "敏锐破局者 | 投机极客", risk: "极高风险 (进取型)", desc: "规则是用来打破的。永远在寻找非对称风险收益的套利者，热爱高智商的资本博弈。在千钧一发之际，你总能精准捕捉到那转瞬即逝的套利空间。" },
-        "ENTJ": { name: "高山金雕 (Golden Eagle)", tags: "战略扩张者 | 资本指挥官", risk: "极高风险 (进取型)", desc: "风暴不是阻碍，而是托举你上升的气流。追求财富帝国的无限扩张，大局观极强，为了宏大目标敢于在计算后重仓。战略已定，版图即将展开。" },
-        "ESTP": { name: "雪豹 (Snow Leopard)", tags: "战术套利者 | 现实操盘手", risk: "高风险 (进取型)", desc: "没有永远的牛市，只有随时准备出击的猎手。嗅觉灵敏的现实主义者，擅长快进快出，当市场极度恐慌时，正是你抄底博弈、饱餐的时刻。" },
-        "INTJ": { name: "雕鸮 (Eagle Owl)", tags: "精密精算师 | 深度架构师", risk: "高风险 (成长型)", desc: "万物皆可量化。只要底层逻辑和数据模型支撑，你敢于下重注并长期持有高波动资产。在别人受情绪支配的黑夜里，你的底层逻辑依然清晰如炬。" },
-        "INTP": { name: "渡鸦 (Raven)", tags: "前沿研究员 | 理论探索者", risk: "中高风险 (成长型)", desc: "你在凝视未来。投资界的技术极客，热衷于高壁垒、高认知门槛的颠覆性赛道（如硬科技、生物医疗），寻找着下一个改变世界的颠覆者。" },
-        "ENFJ": { name: "巨鲸 (Blue Whale)", tags: "宏观趋势捕手 | 周期骑士", risk: "中高风险 (成长型)", desc: "你不只投资资产，你投资的是这个世界未来的样子。带着使命感投资，擅长捕捉具有正面社会价值（ESG）和时代红利的资产。时代大潮终将与你的愿景共鸣。" },
-        "ENFP": { name: "五色鸟 (Taiwan Barbet)", tags: "多元探索者 | 赛道盲盒玩家", risk: "中高风险 (成长型)", desc: "为什么要把鸡蛋放在一个篮子里？思维极度跳跃，对一切新鲜事物充满好奇。你的投资组合非常前卫且多元，每一个新奇的赛道都值得你去开盲盒！" },
-        "ESTJ": { name: "棕熊 (Brown Bear)", tags: "务实掌舵人 | 资产配置专家", risk: "中等风险 (平衡型)", desc: "防守与进攻同样重要。极具条理的管理者，像管理公司一样管理家庭资产负债表。你建立的股债防御工事，足以抵御任何金融寒冬的侵袭。" },
-        "ISTP": { name: "猞猁 (Lynx)", tags: "战术狙击手 | 现金猎人", risk: "中等风险 (平衡型)", desc: "最好的猎手懂得什么是等待。平时极度低调持有现金，你的现金弹药已上膛，只等市场出现极端错杀，瞄准那个确定性极高的绝佳靶位瞬间重仓出击。" },
-        "ESFP": { name: "水獭 (Otter)", tags: "实景体验派 | 现金流玩家", risk: "中等风险 (平衡型)", desc: "理财是为了更松弛的生活。比起看不见的代码和金融衍生品，你更享受现金流落袋为安的实在感，偏好有强现金流支撑的实体资产。" },
-        "ISTJ": { name: "大象 (Elephant)", tags: "基石守卫者 | 纪律执行官", risk: "中低风险 (稳健型)", desc: "时间是你最忠诚的盟友。坚定的复利践行者，偏好高股息、稳定分红的蓝筹标的。每一次严格的纪律定投，都是在构筑不可撼动的财富基石。" },
-        "INFJ": { name: "迷雾帝雉 (Mikado Pheasant)", tags: "长期主义者 | 价值信仰者", risk: "中低风险 (稳健型)", desc: "不畏浮云遮望眼。极其克制，只投资于极少数自己深度认同的伟大公司。你选定的资产，值得用十年的光阴去陪伴它穿越牛熊，用长周期熨平波动。" },
-        "ISFJ": { name: "海狸 (Beaver)", tags: "财富大管家 | 家庭守护者", risk: "低风险 (保守型)", desc: "每一份稳健的收益，都是对家人的承诺。高度责任感，把资金安全放在首位。你修筑的财富水坝（国债、储蓄），足以抵挡通胀的洪流，保障家庭。" },
-        "ESFJ": { name: "狐獴 (Meerkat)", tags: "合群跟随者 | 共识信徒", risk: "低风险 (保守型)", desc: "比起独自冒险，你更相信共识的力量。极度害怕脱离大众，倾向于购买市场上大家都在买的“爆款安全产品”，跟着聪明的大多数走，总是最让人安心的。" },
-        "ISFP": { name: "梅花鹿 (Sika Deer)", tags: "岁月静好型 | 避险储蓄者", risk: "极低风险 (保守型)", desc: "你的财富如同这片静谧的森林。追求内心的绝对平静，对资本市场的博弈有着本能排斥。不需要狂风骤雨般的增长，只需岁月静好，从容不迫。" },
-        "INFP": { name: "水豚 (Capybara)", tags: "佛系随缘派 | 财务极简者", risk: "极低风险 (保守型)", desc: "K线图的起伏与你无关。风险偏好全场最低，财富只是维持内心秩序的工具。绝缘于市场的FOMO情绪，不焦虑，才是最高级的理财。" }
+        "ENTP": { image_url: "entp.png" },
+        "ENTJ": { image_url: "entj.png" },
+        "ESTP": { image_url: "estp.png" },
+        "INTJ": { image_url: "intj.png" },
+        "INTP": { image_url: "intp.png" },
+        "ENFJ": { image_url: "enfj.png" },
+        "ENFP": { image_url: "enfp.png" },
+        "ESTJ": { image_url: "estj.png" },
+        "ISTP": { image_url: "istp.png" },
+        "ESFP": { image_url: "esfp.png" },
+        "ISTJ": { image_url: "istj.png" },
+        "INFJ": { image_url: "infj.png" },
+        "ISFJ": { image_url: "isfj.png" },
+        "ESFJ": { image_url: "esfj.png" },
+        "ISFP": { image_url: "isfp.png" },
+        "INFP": { image_url: "infp.png" }
     };
 
-    // 渲染问题
     function renderQuestion() {
         if (currentQuestion >= questions.length) {
             showResult();
@@ -257,20 +217,17 @@
         document.getElementById('progress').style.width = progressPercent + "%";
     }
 
-    // 处理选项点击计分
     function selectOption(index) {
         let val = questions[currentQuestion].options[index].val;
-        scores[val]++; // 为对应的 MBTI 字母维度加 1 分
+        scores[val]++; 
         currentQuestion++;
         renderQuestion();
     }
 
-    // 计算结果并展示
     function showResult() {
         document.getElementById('quiz-container').style.display = 'none';
         document.getElementById('result-container').style.display = 'block';
 
-        // 核心算法：4个维度，每维7题（单数），必定分出胜负
         let mbti = "";
         mbti += (scores.E > scores.I) ? "E" : "I";
         mbti += (scores.S > scores.N) ? "S" : "N";
@@ -278,14 +235,13 @@
         mbti += (scores.J > scores.P) ? "J" : "P";
 
         let result = dictionary[mbti];
-
-        document.getElementById('res-guardian').innerText = result.name;
-        document.getElementById('res-tags').innerText = mbti + " - " + result.tags;
-        document.getElementById('res-risk').innerText = result.risk;
-        document.getElementById('res-text').innerText = result.desc;
+        let imgElement = document.getElementById('res-image');
+        
+        imgElement.src = result.image_url;
+        imgElement.style.display = 'inline-block';
     }
 
-    // 初始化运行第一题
     renderQuestion();
 </script>
 </body>
+</html>
